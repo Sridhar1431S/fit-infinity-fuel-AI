@@ -1,4 +1,5 @@
 
+import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -11,26 +12,31 @@ import Recipes from "./pages/Recipes";
 import Progress from "./pages/Progress";
 import NotFound from "./pages/NotFound";
 
+// Create a client
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/diet-plan" element={<MyDietPlan />} />
-          <Route path="/goals" element={<FitnessGoals />} />
-          <Route path="/recipes" element={<Recipes />} />
-          <Route path="/progress" element={<Progress />} />
-          <Route path="/settings" element={<Index />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  return (
+    <React.StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/diet-plan" element={<MyDietPlan />} />
+              <Route path="/goals" element={<FitnessGoals />} />
+              <Route path="/recipes" element={<Recipes />} />
+              <Route path="/progress" element={<Progress />} />
+              <Route path="/settings" element={<Index />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </React.StrictMode>
+  );
+};
 
 export default App;
