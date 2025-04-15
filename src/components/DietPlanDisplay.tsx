@@ -1,40 +1,17 @@
-
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Button } from "./ui/button";
 import { useEffect, useState } from "react";
+import type { DietPlan } from "@/types/diet";
+import { DietPlanLoading } from "./diet/DietPlanLoading";
+import { DietPlanStats } from "./diet/DietPlanStats";
+import { MealCard } from "./diet/MealCard";
 
 interface DietPlanDisplayProps {
   fitnessGoal: "lose" | "gain" | "maintain";
-}
-
-interface Meal {
-  name: string;
-  ingredients: string[];
-  portionSize: string;
-  calories: number;
-  image: string;
-}
-
-interface DietPlan {
-  dailyCalories: number;
-  protein: number;
-  carbs: number;
-  fats: number;
-  waterIntake: number;
-  meals: {
-    breakfast: Meal;
-    morningSnack: Meal;
-    lunch: Meal;
-    eveningSnack: Meal;
-    dinner: Meal;
-  };
 }
 
 export default function DietPlanDisplay({ fitnessGoal }: DietPlanDisplayProps) {
   const [dietPlan, setDietPlan] = useState<DietPlan | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Mock data for demo purposes
   useEffect(() => {
     // Simulate API call with a timeout
     setTimeout(() => {
@@ -183,20 +160,7 @@ export default function DietPlanDisplay({ fitnessGoal }: DietPlanDisplayProps) {
   }, [fitnessGoal]);
 
   if (loading) {
-    return (
-      <div className="w-full max-w-5xl mx-auto p-8">
-        <div className="text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 animate-pulse-soft bg-fitness-green/20 rounded-full mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-fitness-green">
-              <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
-              <circle cx="12" cy="12" r="3"></circle>
-            </svg>
-          </div>
-          <h2 className="text-xl font-medium text-gray-700">Generating your personalized diet plan</h2>
-          <p className="text-gray-500 mt-2">Our AI is creating a plan tailored to your goals...</p>
-        </div>
-      </div>
-    );
+    return <DietPlanLoading />;
   }
 
   if (!dietPlan) return null;
@@ -216,58 +180,7 @@ export default function DietPlanDisplay({ fitnessGoal }: DietPlanDisplayProps) {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-10 animate-fade-in">
-        <Card className="bg-fitness-green/5 border-fitness-green/20">
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-gray-500">Daily Calories</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{dietPlan.dailyCalories} kcal</div>
-          </CardContent>
-        </Card>
-        
-        <Card className="bg-fitness-blue/5 border-fitness-blue/20">
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-gray-500">Macros</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-3 gap-1 text-sm">
-              <div>
-                <div className="font-semibold">{dietPlan.protein}g</div>
-                <div className="text-xs text-gray-500">Protein</div>
-              </div>
-              <div>
-                <div className="font-semibold">{dietPlan.carbs}g</div>
-                <div className="text-xs text-gray-500">Carbs</div>
-              </div>
-              <div>
-                <div className="font-semibold">{dietPlan.fats}g</div>
-                <div className="text-xs text-gray-500">Fats</div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-        
-        <Card className="bg-fitness-orange/5 border-fitness-orange/20">
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-gray-500">Water Intake</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{dietPlan.waterIntake} L</div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-gray-500">Fitness Goal</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="font-semibold capitalize">
-              {fitnessGoal === "lose" ? "Lose Weight" : fitnessGoal === "gain" ? "Gain Weight" : "Maintain Weight"}
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+      <DietPlanStats dietPlan={dietPlan} fitnessGoal={fitnessGoal} />
 
       <div className="mb-8 animate-fade-in">
         <h3 className="text-xl font-semibold mb-4">Daily Meal Plan</h3>
@@ -281,51 +194,12 @@ export default function DietPlanDisplay({ fitnessGoal }: DietPlanDisplayProps) {
                 : mealTime.charAt(0).toUpperCase() + mealTime.slice(1);
             
             return (
-              <Card key={mealTime} className="overflow-hidden border-0 shadow-md">
-                <div className="md:flex">
-                  <div className="md:w-1/3 h-48 md:h-auto bg-gray-200 relative overflow-hidden">
-                    <img 
-                      src={meal.image} 
-                      alt={meal.name} 
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="md:w-2/3 p-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <span className="text-sm font-medium text-fitness-green">{mealDisplayName}</span>
-                        <h4 className="text-xl font-semibold mt-1">{meal.name}</h4>
-                      </div>
-                      <span className="bg-fitness-orange/10 text-fitness-orange-dark px-3 py-1 rounded-full text-sm font-medium">
-                        {meal.calories} kcal
-                      </span>
-                    </div>
-                    
-                    <div className="mb-4">
-                      <div className="text-sm font-medium text-gray-500 mb-1">Ingredients:</div>
-                      <ul className="text-sm grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1">
-                        {meal.ingredients.map((ingredient, index) => (
-                          <li key={index} className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 rounded-full bg-fitness-green"></div>
-                            {ingredient}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <span className="text-sm text-gray-500">Portion size:</span>
-                        <span className="ml-2 text-sm">{meal.portionSize}</span>
-                      </div>
-                      
-                      <Button variant="outline" size="sm">
-                        Swap Meal
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </Card>
+              <MealCard
+                key={mealTime}
+                meal={meal}
+                mealTime={mealTime}
+                mealDisplayName={mealDisplayName}
+              />
             );
           })}
         </div>
