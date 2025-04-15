@@ -20,6 +20,24 @@ const App = () => {
     <React.StrictMode>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
+          {/* Neon background with gradient animation */}
+          <div className="fixed inset-0 -z-10">
+            <div className="absolute inset-0 bg-gradient-to-br from-fitness-blue/20 via-fitness-green/20 to-fitness-orange/20 animate-gradient-shift"></div>
+            <div className="absolute inset-0 backdrop-blur-[100px]"></div>
+            {/* Fitness anime image */}
+            <img
+              src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b"
+              alt="Fitness Inspiration"
+              className="absolute right-0 bottom-0 w-48 h-auto opacity-30 mix-blend-luminosity"
+            />
+            {/* Neon light effects */}
+            <div className="absolute top-0 left-0 w-full h-full">
+              <div className="absolute top-[20%] left-[10%] w-32 h-32 bg-fitness-blue/30 rounded-full blur-3xl animate-pulse-soft"></div>
+              <div className="absolute top-[40%] right-[20%] w-40 h-40 bg-fitness-green/20 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: "1s" }}></div>
+              <div className="absolute bottom-[30%] left-[30%] w-36 h-36 bg-fitness-orange/20 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: "2s" }}></div>
+            </div>
+          </div>
+
           <Toaster />
           <Sonner />
           <BrowserRouter>
