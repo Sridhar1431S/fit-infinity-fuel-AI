@@ -1,6 +1,7 @@
 
 import Header from '@/components/Header';
 import RecipesCarousel from '@/components/RecipesCarousel';
+import { toast } from '@/components/ui/use-toast';
 
 // Mock recipe data
 const recipes = [
@@ -35,7 +36,13 @@ const recipes = [
 
 const Recipes = () => {
   const handleAddToPlan = (recipeId: number) => {
-    console.log(`Recipe ${recipeId} added to plan`);
+    const recipe = recipes.find(r => r.id === recipeId);
+    if (recipe) {
+      toast({
+        title: "Recipe Added",
+        description: `${recipe.name} has been added to your meal plan.`,
+      });
+    }
   };
 
   return (

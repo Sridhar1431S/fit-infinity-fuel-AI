@@ -1,12 +1,27 @@
 
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Target, TrendingUp, Scale } from 'lucide-react';
+import { toast } from '@/components/ui/use-toast';
 
 const FitnessGoals = () => {
   const [selectedGoal, setSelectedGoal] = useState<string | null>(null);
+  const navigate = useNavigate();
+
+  const handleStartJourney = () => {
+    if (selectedGoal) {
+      toast({
+        title: "Fitness Goal Selected",
+        description: `Your ${selectedGoal} goal has been set! Redirecting to your diet plan.`,
+      });
+      
+      // Navigate to diet plan with the selected goal as state
+      navigate('/diet-plan', { state: { fitnessGoal: selectedGoal.toLowerCase() } });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
@@ -41,7 +56,9 @@ const FitnessGoals = () => {
           
           {selectedGoal && (
             <div className="mt-8 text-center animate-fade-in">
-              <Button className="bg-gradient-to-r from-fitness-green to-fitness-blue text-white px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+              <Button 
+                onClick={handleStartJourney}
+                className="bg-gradient-to-r from-fitness-green to-fitness-blue text-white px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
                 Start Your Journey
               </Button>
             </div>

@@ -20,21 +20,35 @@ const App = () => {
     <React.StrictMode>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
-          {/* Neon background with gradient animation */}
+          {/* Gym background with neon lights */}
           <div className="fixed inset-0 -z-10">
-            <div className="absolute inset-0 bg-gradient-to-br from-fitness-blue/20 via-fitness-green/20 to-fitness-orange/20 animate-gradient-shift"></div>
-            <div className="absolute inset-0 backdrop-blur-[100px]"></div>
-            {/* Fitness anime image */}
+            <div className="absolute inset-0 bg-gradient-to-br from-fitness-blue/30 via-fitness-green/30 to-fitness-orange/30 animate-gradient-shift"></div>
+            <div className="absolute inset-0 backdrop-blur-[80px]"></div>
+            
+            {/* Gym photos */}
             <img
-              src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b"
-              alt="Fitness Inspiration"
-              className="absolute right-0 bottom-0 w-48 h-auto opacity-30 mix-blend-luminosity"
+              src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48"
+              alt="Gym Equipment"
+              className="absolute right-0 top-0 w-64 h-auto opacity-20 mix-blend-luminosity"
             />
-            {/* Neon light effects */}
+            <img
+              src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438"
+              alt="Fitness Training"
+              className="absolute left-0 bottom-0 w-64 h-auto opacity-20 mix-blend-luminosity"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e"
+              alt="Gym Workout"
+              className="absolute right-0 bottom-1/3 w-56 h-auto opacity-20 mix-blend-luminosity"
+            />
+            
+            {/* Enhanced neon light effects */}
             <div className="absolute top-0 left-0 w-full h-full">
-              <div className="absolute top-[20%] left-[10%] w-32 h-32 bg-fitness-blue/30 rounded-full blur-3xl animate-pulse-soft"></div>
-              <div className="absolute top-[40%] right-[20%] w-40 h-40 bg-fitness-green/20 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: "1s" }}></div>
-              <div className="absolute bottom-[30%] left-[30%] w-36 h-36 bg-fitness-orange/20 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: "2s" }}></div>
+              <div className="absolute top-[20%] left-[10%] w-36 h-36 bg-fitness-blue/40 rounded-full blur-3xl animate-pulse-soft"></div>
+              <div className="absolute top-[40%] right-[20%] w-44 h-44 bg-fitness-green/40 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: "1s" }}></div>
+              <div className="absolute bottom-[30%] left-[30%] w-40 h-40 bg-fitness-orange/40 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: "2s" }}></div>
+              <div className="absolute top-[60%] right-[30%] w-32 h-32 bg-purple-500/30 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: "1.5s" }}></div>
+              <div className="absolute bottom-[10%] right-[15%] w-28 h-28 bg-pink-500/30 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: "0.8s" }}></div>
             </div>
           </div>
 

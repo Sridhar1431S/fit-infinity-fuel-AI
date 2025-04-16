@@ -5,18 +5,48 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { toast } from '@/components/ui/use-toast';
 
 const Progress = () => {
   const [weight, setWeight] = useState('');
   const [date, setDate] = useState('');
-
-  // Mock data for the chart
-  const data = [
+  const [progressData, setProgressData] = useState([
     { date: '2024-01', weight: 75 },
     { date: '2024-02', weight: 73 },
     { date: '2024-03', weight: 71 },
     { date: '2024-04', weight: 70 },
-  ];
+  ]);
+
+  const handleSaveProgress = () => {
+    if (!weight || !date) {
+      toast({
+        title: "Missing Information",
+        description: "Please enter both weight and date to save your progress.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Format date to match chart format
+    const formattedDate = date.substring(0, 7); // Get YYYY-MM format
+    
+    // Add new progress data
+    const newProgressData = [
+      ...progressData,
+      { date: formattedDate, weight: parseFloat(weight) }
+    ].sort((a, b) => a.date.localeCompare(b.date)); // Sort by date
+    
+    setProgressData(newProgressData);
+    
+    // Clear form
+    setWeight('');
+    setDate('');
+    
+    toast({
+      title: "Progress Saved",
+      description: `Your weight of ${weight}kg on ${date} has been recorded.`,
+    });
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
@@ -50,7 +80,9 @@ const Progress = () => {
                       onChange={(e) => setDate(e.target.value)}
                     />
                   </div>
-                  <Button className="w-full bg-gradient-to-r from-fitness-green to-fitness-blue text-white">
+                  <Button 
+                    onClick={handleSaveProgress}
+                    className="w-full bg-gradient-to-r from-fitness-green to-fitness-blue text-white">
                     Save Progress
                   </Button>
                 </div>
@@ -63,7 +95,7 @@ const Progress = () => {
               </CardHeader>
               <CardContent className="h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={data}>
+                  <LineChart data={progressData}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="date" />
                     <YAxis />
