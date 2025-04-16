@@ -2,6 +2,8 @@
 import Header from '@/components/Header';
 import RecipesCarousel from '@/components/RecipesCarousel';
 import { toast } from '@/components/ui/use-toast';
+import { Button } from '@/components/ui/button';
+import { useState } from 'react';
 
 // Mock recipe data
 const recipes = [
@@ -35,14 +37,31 @@ const recipes = [
 ];
 
 const Recipes = () => {
+  const [mealPlan, setMealPlan] = useState<number[]>([]);
+
   const handleAddToPlan = (recipeId: number) => {
     const recipe = recipes.find(r => r.id === recipeId);
     if (recipe) {
+      // Add the recipe to the meal plan
+      setMealPlan(prev => [...prev, recipeId]);
+      
       toast({
         title: "Recipe Added",
         description: `${recipe.name} has been added to your meal plan.`,
       });
     }
+  };
+
+  const handleViewMealPlan = () => {
+    const selectedRecipes = recipes.filter(recipe => mealPlan.includes(recipe.id));
+    const recipeNames = selectedRecipes.map(r => r.name).join(', ');
+    
+    toast({
+      title: "Your Meal Plan",
+      description: mealPlan.length > 0 
+        ? `Your plan includes: ${recipeNames}`
+        : "Your meal plan is currently empty.",
+    });
   };
 
   return (
@@ -52,6 +71,16 @@ const Recipes = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-fitness-green/5 via-fitness-blue/5 to-fitness-orange/5 animate-gradient-shift"></div>
         <div className="relative z-10 container mx-auto py-8 px-4">
           <h1 className="text-4xl font-bold text-center mb-8">Healthy Recipe Collection</h1>
+          
+          <div className="flex justify-end mb-4">
+            <Button 
+              onClick={handleViewMealPlan} 
+              className="bg-gradient-to-r from-fitness-blue to-fitness-green text-white"
+            >
+              View Meal Plan {mealPlan.length > 0 && `(${mealPlan.length})`}
+            </Button>
+          </div>
+          
           <RecipesCarousel recipes={recipes} onAddToPlan={handleAddToPlan} />
         </div>
       </main>
