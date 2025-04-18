@@ -1,73 +1,55 @@
-# Welcome to your Lovable project
+ 🧠 FitInfinityFuel AI
 
-## Project info
+**FitInfinityFuel AI** is a smart web application that delivers **personalized AI-powered diet plans** based on your fitness goals — whether you're looking to lose weight, gain muscle, or maintain your current form.
 
-**URL**: https://lovable.dev/projects/bd9abbcd-96ac-467e-b785-a34a12aa941b
 
-## How can I edit this code?
 
-There are several ways of editing your application.
+## 🚀 Features
 
-**Use Lovable**
+- 🔥 Personalized diet plans powered by AI  
+- 🥗 Categorized fitness goals: Lose, Gain, or Maintain weight  
+- 📈 Progress tracking  
+- 🍽 Healthy recipe suggestions  
+- ⚙️ Fully responsive UI  
+- Built with **React + TypeScript + Tailwind CSS**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/bd9abbcd-96ac-467e-b785-a34a12aa941b) and start prompting.
+## 📂 Project Structure
 
-Changes made via Lovable will be committed automatically to this repo.
+```bash
+fit-infinity-fuel-AI/
+├── public/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── assets/
+│   └── main.tsx
+├── index.html
+├── package.json
+└── README.md
 
-**Use your preferred IDE**
+💻 Getting Started
+Clone the repository
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+git clone https://github.com/Sridhar1431S/fit-infinity-fuel-AI.git
+cd fit-infinity-fuel-AI
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Install dependencies
+npm install
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+Start the development server
 npm run dev
-```
 
-**Edit a file directly in GitHub**
+🌐 Tech Stack
+Frontend: React, TypeScript
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Styling: Tailwind CSS
 
-**Use GitHub Codespaces**
+Build Tool: Vite
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+🤝 Contributing
+Contributions are welcome! Feel free to fork the repo and submit a pull request.
 
-## What technologies are used for this project?
+📄 License
+This project is licensed under the MIT License.
 
-This project is built with:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/bd9abbcd-96ac-467e-b785-a34a12aa941b) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
