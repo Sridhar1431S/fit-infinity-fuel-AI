@@ -2,6 +2,7 @@
 
 **FitInfinityFuel AI** is a smart web application that delivers **personalized AI-powered diet plans** based on your fitness goals — whether you're looking to lose weight, gain muscle, or maintain your current form.
 
+![Screenshot 2025-04-18 134005](https://github.com/user-attachments/assets/cd723844-6fb1-4ea0-8e7e-6b81612ce240)
 
 
 ## 🚀 Features
