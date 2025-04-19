@@ -48,14 +48,14 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
 
     --primary: 122 39% 49%;
     --primary-foreground: 355.7 100% 97.3%;
@@ -94,6 +94,7 @@
 
   body {
     @apply bg-background text-foreground font-inter;
+    padding-top: 76px; /* Add padding to body to account for fixed header */
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -128,6 +129,65 @@
   
   .infinity-border {
     @apply border-2 border-transparent bg-gradient-to-r from-fitness-green via-fitness-blue to-fitness-orange bg-clip-border;
+  }
+
+  /* New components for the enhanced design */
+  .glow-card {
+    @apply relative border border-white/20 dark:border-white/10 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md;
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.2), 
+                0 0 30px rgba(33, 150, 243, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .glow-card:hover {
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.3), 
+                0 0 40px rgba(33, 150, 243, 0.2);
+  }
+  
+  .neon-border {
+    @apply relative rounded-lg overflow-hidden;
+  }
+  
+  .neon-border::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+      var(--fitness-green), 
+      var(--fitness-blue), 
+      var(--fitness-orange), 
+      var(--fitness-green));
+    z-index: -1;
+    background-size: 400%;
+    animation: border-animate 3s linear infinite;
+    border-radius: inherit;
+  }
+  
+  /* Enhanced button styles */
+  .neon-button {
+    @apply relative overflow-hidden bg-gradient-to-r from-fitness-green to-fitness-blue text-white rounded-lg px-6 py-2 font-medium 
+    transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 active:scale-95;
+  }
+  
+  .neon-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+      rgba(76, 175, 80, 0.5), 
+      rgba(33, 150, 243, 0.5));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .neon-button:hover::after {
+    opacity: 0.2;
   }
 }
 
@@ -173,6 +233,15 @@
       box-shadow: 0 0 5px rgba(22, 163, 74, 0.5);
     }
   }
+  
+  @keyframes border-animate {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
 }
 
 @layer utilities {
@@ -191,5 +260,10 @@
   
   .animate-lightning-edge {
     animation: lightning-edge 2s infinite;
+  }
+  
+  .animate-border {
+    animation: border-animate 3s linear infinite;
+    background-size: 400%;
   }
 }
