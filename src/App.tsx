@@ -83,18 +83,18 @@ const App = () => {
               style={{animationDelay: "2s"}}
             />
             
-            {/* Floating dumbbells animation */}
-            {[...Array(15)].map((_, index) => (
+            {/* Enhanced floating dumbbells animation - more dumbbells, better positioned */}
+            {Array.from({ length: 30 }).map((_, index) => (
               <div 
                 key={index}
-                className="dumbbell absolute text-gray-600 dark:text-gray-400" 
+                className="dumbbell absolute text-gray-400 dark:text-gray-600" 
                 style={{
                   left: `${Math.random() * 100}%`,
                   top: `${Math.random() * 100}%`,
                   animationDelay: `${Math.random() * 5}s`,
                   animationDuration: `${7 + Math.random() * 5}s`,
-                  transform: `scale(${0.5 + Math.random() * 1}) rotate(${Math.random() * 45}deg)`,
-                  opacity: 0.1 + Math.random() * 0.2
+                  transform: `scale(${0.3 + Math.random() * 0.7}) rotate(${Math.random() * 45}deg)`,
+                  opacity: 0.1 + Math.random() * 0.3
                 }}
               >
                 <div className="dumbbell-bar"></div>
@@ -114,7 +114,7 @@ const App = () => {
             
             {/* Enhanced particle system - subtle moving dots */}
             <div className="particle-container absolute inset-0 overflow-hidden opacity-30 dark:opacity-20" aria-hidden="true">
-              {[...Array(20)].map((_, i) => (
+              {Array.from({ length: 20 }).map((_, i) => (
                 <div 
                   key={i}
                   className="absolute h-2 w-2 rounded-full bg-white/80 dark:bg-white/50"

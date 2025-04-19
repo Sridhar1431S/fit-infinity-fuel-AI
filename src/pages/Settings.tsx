@@ -123,23 +123,30 @@ const Settings = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 flex flex-col transition-colors duration-300">
-      {/* Animated dumbbell background */}
+      {/* Enhanced animated dumbbell background */}
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, index) => (
+        {/* Generate 30 animated dumbbells with varied positions and animations */}
+        {Array.from({ length: 30 }).map((_, index) => (
           <div
             key={index}
-            className="dumbbell absolute text-gray-500 dark:text-gray-400"
+            className="dumbbell absolute text-gray-300 dark:text-gray-600"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
+              opacity: 0.2 + Math.random() * 0.3,
+              transform: `scale(${0.5 + Math.random() * 1})`,
+              animationDuration: `${5 + Math.random() * 7}s`,
               animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${Math.random() * 10 + 5}s`,
-              transform: `scale(${Math.random() * 0.5 + 0.5}) rotate(${Math.random() * 360}deg)`,
             }}
           >
             <div className="dumbbell-bar"></div>
           </div>
         ))}
+        
+        {/* Gradient orbs for additional visual interest */}
+        <div className="absolute top-[20%] left-[10%] w-64 h-64 rounded-full bg-fitness-green/10 dark:bg-fitness-green/5 blur-3xl animate-pulse-soft"></div>
+        <div className="absolute bottom-[30%] right-[20%] w-56 h-56 rounded-full bg-fitness-blue/10 dark:bg-fitness-blue/5 blur-3xl animate-pulse-soft" style={{animationDelay: '1.5s'}}></div>
+        <div className="absolute top-[60%] right-[40%] w-72 h-72 rounded-full bg-fitness-orange/10 dark:bg-fitness-orange/5 blur-3xl animate-pulse-soft" style={{animationDelay: '0.8s'}}></div>
       </div>
 
       <Header />

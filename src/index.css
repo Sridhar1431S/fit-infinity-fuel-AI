@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 @tailwind base;
@@ -85,9 +84,7 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
@@ -200,37 +197,37 @@
     opacity: 0.2;
   }
 
-  /* Dumbbell animation */
+  /* Enhanced dumbbell animation */
   .dumbbell {
-    position: relative;
+    position: absolute;
     width: 24px;
     height: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0.2;
-    animation: float 7s infinite ease-in-out;
+    animation: float-dumbbell 5s infinite ease-in-out;
+    z-index: 0;
   }
 
   .dumbbell::before, .dumbbell::after {
     content: '';
     position: absolute;
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     background: currentColor;
     border-radius: 50%;
   }
 
   .dumbbell::before {
-    left: -2px;
+    left: -4px;
   }
 
   .dumbbell::after {
-    right: -2px;
+    right: -4px;
   }
 
   .dumbbell-bar {
-    width: 12px;
+    width: 16px;
     height: 3px;
     background: currentColor;
     border-radius: 2px;
@@ -238,6 +235,21 @@
 }
 
 @layer keyframes {
+  @keyframes float-dumbbell {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-15px) rotate(5deg);
+    }
+    50% {
+      transform: translateY(0) rotate(0deg);
+    }
+    75% {
+      transform: translateY(15px) rotate(-5deg);
+    }
+  }
+  
   @keyframes float {
     0%, 100% {
       transform: translateY(0) rotate(0deg);
