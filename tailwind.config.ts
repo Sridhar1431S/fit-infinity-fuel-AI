@@ -63,7 +63,7 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom colors for our fitness app
+				// Custom colors for our fitness app with increased intensity
 				"fitness-green": {
 					light: "#E8F5E9",
 					DEFAULT: "#4CAF50",
@@ -117,7 +117,7 @@ export default {
 						opacity: '1',
 					},
 					'50%': {
-						opacity: '0.8',
+						opacity: '0.7',
 					},
 				},
 				'float-dumbbell': {
@@ -125,13 +125,13 @@ export default {
 						transform: 'translateY(0) rotate(0deg)'
 					},
 					'25%': {
-						transform: 'translateY(-15px) rotate(5deg)'
+						transform: 'translateY(-20px) rotate(5deg)'
 					},
 					'50%': {
 						transform: 'translateY(0) rotate(0deg)'
 					},
 					'75%': {
-						transform: 'translateY(15px) rotate(-5deg)'
+						transform: 'translateY(20px) rotate(-5deg)'
 					}
 				},
 				'float': {
@@ -139,15 +139,15 @@ export default {
 						transform: 'translateY(0)'
 					},
 					'50%': {
-						transform: 'translateY(-20px)'
+						transform: 'translateY(-25px)'
 					}
 				},
 				'glow-pulse': {
 					'0%, 100%': {
-						boxShadow: '0 0 10px rgba(76, 175, 80, 0.3), 0 0 20px rgba(33, 150, 243, 0.2)'
+						boxShadow: '0 0 15px rgba(76, 175, 80, 0.4), 0 0 30px rgba(33, 150, 243, 0.3)'
 					},
 					'50%': {
-						boxShadow: '0 0 15px rgba(76, 175, 80, 0.4), 0 0 30px rgba(33, 150, 243, 0.3)'
+						boxShadow: '0 0 25px rgba(76, 175, 80, 0.6), 0 0 50px rgba(33, 150, 243, 0.4)'
 					}
 				},
 				'gradient-shift': {
@@ -166,15 +166,18 @@ export default {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.5s ease-out',
-				'pulse-soft': 'pulse-soft 2s infinite',
-				'float-dumbbell': 'float-dumbbell 5s ease-in-out infinite',
-				'float': 'float 3s ease-in-out infinite',
-				'glow-pulse': 'glow-pulse 2s infinite',
-				'gradient-shift': 'gradient-shift 5s ease infinite'
+				'pulse-soft': 'pulse-soft 3s infinite',
+				'float-dumbbell': 'float-dumbbell 6s ease-in-out infinite',
+				'float': 'float 6s ease-in-out infinite',
+				'glow-pulse': 'glow-pulse 3s infinite',
+				'gradient-shift': 'gradient-shift 8s ease infinite'
 			},
 			fontFamily: {
 				poppins: ["Poppins", "sans-serif"],
 				inter: ["Inter", "sans-serif"]
+			},
+			opacity: {
+				'15': '0.15'
 			}
 		}
 	},
