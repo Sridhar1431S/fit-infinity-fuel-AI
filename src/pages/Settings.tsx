@@ -13,12 +13,15 @@ import { Moon, Sun, Languages, Type, Save } from "lucide-react";
 type Theme = "light" | "dark";
 
 // Language types
-type Language = "en" | "es" | "fr";
+type Language = "en" | "es" | "fr" | "de";
+
+// Font size types
+type FontSize = 1 | 2 | 3;
 
 // Settings interface
 interface UserSettings {
   theme: Theme;
-  fontSize: number; // 1 = small, 2 = medium, 3 = large
+  fontSize: FontSize;
   language: Language;
 }
 
@@ -27,6 +30,14 @@ const defaultSettings: UserSettings = {
   theme: "light",
   fontSize: 2,
   language: "en",
+};
+
+// Language labels
+const languageLabels: Record<Language, string> = {
+  en: "English",
+  es: "Español",
+  fr: "Français",
+  de: "Deutsch"
 };
 
 const Settings = () => {
@@ -73,7 +84,7 @@ const Settings = () => {
   const handleFontSizeChange = (value: number[]) => {
     setSettings((prev) => ({
       ...prev,
-      fontSize: value[0],
+      fontSize: value[0] as FontSize,
     }));
     setSaved(false);
   };
@@ -92,6 +103,7 @@ const Settings = () => {
     toast({
       title: "Settings saved",
       description: "Your preferences have been saved successfully",
+      className: "bg-fitness-green/10 border-fitness-green text-foreground"
     });
   };
 
@@ -109,13 +121,30 @@ const Settings = () => {
     }
   };
 
-  // Header offset for fixed header
-  const headerOffset = "mt-24"; // Add margin to account for fixed header
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 flex flex-col transition-colors duration-300">
+      {/* Animated dumbbell background */}
+      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        {[...Array(20)].map((_, index) => (
+          <div
+            key={index}
+            className="dumbbell absolute text-gray-500 dark:text-gray-400"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${Math.random() * 10 + 5}s`,
+              transform: `scale(${Math.random() * 0.5 + 0.5}) rotate(${Math.random() * 360}deg)`,
+            }}
+          >
+            <div className="dumbbell-bar"></div>
+          </div>
+        ))}
+      </div>
+
       <Header />
-      <main className={`flex-1 container mx-auto py-8 px-4 ${headerOffset}`}>
+
+      <main className="flex-1 container mx-auto py-8 px-4">
         <div className="max-w-2xl mx-auto space-y-12">
           <h1 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-fitness-green via-fitness-blue to-fitness-orange bg-clip-text text-transparent">
             Settings
@@ -136,12 +165,13 @@ const Settings = () => {
                   </p>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Sun className="h-4 w-4" />
+                  <Sun className="h-4 w-4 text-fitness-orange" />
                   <Switch 
                     checked={settings.theme === "dark"} 
                     onCheckedChange={handleThemeToggle}
+                    className="data-[state=checked]:bg-fitness-blue"
                   />
-                  <Moon className="h-4 w-4" />
+                  <Moon className="h-4 w-4 text-fitness-blue" />
                 </div>
               </div>
             </div>
@@ -186,20 +216,14 @@ const Settings = () => {
               <RadioGroup 
                 value={settings.language} 
                 onValueChange={handleLanguageChange} 
-                className="gap-4"
+                className="gap-4 grid grid-cols-2"
               >
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="en" id="en" />
-                  <Label htmlFor="en">English</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="es" id="es" />
-                  <Label htmlFor="es">Español</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="fr" id="fr" />
-                  <Label htmlFor="fr">Français</Label>
-                </div>
+                {Object.entries(languageLabels).map(([code, label]) => (
+                  <div key={code} className="flex items-center space-x-2 bg-white/50 dark:bg-gray-700/50 p-3 rounded-lg border border-gray-100 dark:border-gray-600 transition-all duration-200 hover:border-fitness-green dark:hover:border-fitness-green">
+                    <RadioGroupItem value={code} id={code} className="text-fitness-green" />
+                    <Label htmlFor={code} className="w-full cursor-pointer">{label}</Label>
+                  </div>
+                ))}
               </RadioGroup>
             </div>
 

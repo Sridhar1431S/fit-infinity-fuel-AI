@@ -26,6 +26,8 @@ const App = () => {
       // Apply theme
       if (theme === "dark") {
         document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
       }
       
       // Apply font size
@@ -44,7 +46,7 @@ const App = () => {
     <React.StrictMode>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
-          {/* Enhanced animated background with gym aesthetic */}
+          {/* Enhanced animated background with gym aesthetic and dumbbells */}
           <div className="fixed inset-0 -z-10 transition-all duration-700 dark:bg-gray-900">
             <div className="absolute inset-0 bg-gradient-to-br from-fitness-blue/20 via-fitness-green/20 to-fitness-orange/20 dark:from-fitness-blue/10 dark:via-fitness-green/10 dark:to-fitness-orange/10 animate-gradient-shift"></div>
             <div className="absolute inset-0 backdrop-blur-[80px]"></div>
@@ -80,6 +82,24 @@ const App = () => {
               className="absolute right-1/4 top-2/3 w-48 h-auto opacity-20 dark:opacity-10 mix-blend-luminosity animate-float"
               style={{animationDelay: "2s"}}
             />
+            
+            {/* Floating dumbbells animation */}
+            {[...Array(15)].map((_, index) => (
+              <div 
+                key={index}
+                className="dumbbell absolute text-gray-600 dark:text-gray-400" 
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 5}s`,
+                  animationDuration: `${7 + Math.random() * 5}s`,
+                  transform: `scale(${0.5 + Math.random() * 1}) rotate(${Math.random() * 45}deg)`,
+                  opacity: 0.1 + Math.random() * 0.2
+                }}
+              >
+                <div className="dumbbell-bar"></div>
+              </div>
+            ))}
             
             {/* Enhanced dynamic neon light effects */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
