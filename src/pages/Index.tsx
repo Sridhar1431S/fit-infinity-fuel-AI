@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Header from "@/components/Header";
 import UserInputForm from "@/components/UserInputForm";
@@ -7,6 +6,7 @@ import FitnessGoalSelection from "@/components/FitnessGoalSelection";
 import RecipesCarousel from "@/components/RecipesCarousel";
 import { Button } from "@/components/ui/button";
 import { Zap } from "lucide-react";
+import GymGallery3D from "@/components/GymGallery3D";
 
 // Mock recipe data
 const mockRecipes = [
@@ -93,6 +93,8 @@ const Index = () => {
                 Whether you want to lose, gain, or maintain weight, our AI has you covered.
               </p>
             </div>
+
+            <GymGallery3D />
 
             <FitnessGoalSelection onSelect={handleGoalSelect} />
 

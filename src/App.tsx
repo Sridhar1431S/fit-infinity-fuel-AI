@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -11,6 +10,7 @@ import FitnessGoals from "./pages/FitnessGoals";
 import Recipes from "./pages/Recipes";
 import Progress from "./pages/Progress";
 import NotFound from "./pages/NotFound";
+import Settings from "./pages/Settings";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -73,7 +73,7 @@ const App = () => {
               <Route path="/goals" element={<FitnessGoals />} />
               <Route path="/recipes" element={<Recipes />} />
               <Route path="/progress" element={<Progress />} />
-              <Route path="/settings" element={<Index />} />
+              <Route path="/settings" element={<Settings />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
