@@ -101,7 +101,7 @@ const Index = () => {
             <div className="mt-20 max-w-5xl mx-auto">
               <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">Why Choose FitInfinityFuel AI?</h2>
               <div className="grid md:grid-cols-3 gap-8">
-                <div className="bg-white rounded-xl p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="bg-transparent rounded-xl p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                   <div className="w-16 h-16 bg-gradient-to-br from-fitness-green/20 to-fitness-green/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-fitness-green">
                       <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
@@ -111,7 +111,7 @@ const Index = () => {
                   <p className="text-gray-600 text-sm">Our advanced AI analyzes your unique needs to create the perfect meal plan.</p>
                 </div>
                 
-                <div className="bg-white rounded-xl p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="bg-transparent rounded-xl p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                   <div className="w-16 h-16 bg-gradient-to-br from-fitness-blue/20 to-fitness-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-fitness-blue">
                       <path d="M21 11V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6"/>
@@ -126,7 +126,7 @@ const Index = () => {
                   <p className="text-gray-600 text-sm">Customized nutrition based on your body metrics and specific goals.</p>
                 </div>
                 
-                <div className="bg-white rounded-xl p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="bg-transparent rounded-xl p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                   <div className="w-16 h-16 bg-gradient-to-br from-fitness-orange/20 to-fitness-orange/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-fitness-orange">
                       <path d="M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10Z"/>
@@ -200,7 +200,7 @@ const Index = () => {
         )}
       </main>
       
-      <footer className="bg-white py-8 border-t">
+      <footer className="bg-transparent py-8 border-t">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center mb-4 md:mb-0">
