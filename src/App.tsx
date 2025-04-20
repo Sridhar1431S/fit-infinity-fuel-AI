@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -43,18 +42,18 @@ const App = () => {
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <div className="fixed inset-0 -z-10 bg-transparent overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-fitness-blue/5 via-fitness-green/5 to-fitness-orange/5 dark:from-fitness-blue/5 dark:via-fitness-green/5 dark:to-fitness-orange/5 animate-gradient-shift opacity-50"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-fitness-blue/10 via-fitness-green/10 to-fitness-orange/10 dark:from-fitness-blue/5 dark:via-fitness-green/5 dark:to-fitness-orange/5 animate-gradient-shift"></div>
             
             <img
               src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48"
               alt="Gym Equipment"
-              className="absolute right-0 top-0 w-96 h-auto opacity-10 dark:opacity-5 mix-blend-overlay animate-float"
+              className="absolute right-0 top-0 w-96 h-auto opacity-5 dark:opacity-3 mix-blend-overlay animate-float"
               style={{animationDelay: "0s"}}
             />
             <img
               src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438"
               alt="Fitness Training"
-              className="absolute left-0 bottom-0 w-96 h-auto opacity-10 dark:opacity-5 mix-blend-overlay animate-float"
+              className="absolute left-0 bottom-0 w-96 h-auto opacity-5 dark:opacity-3 mix-blend-overlay animate-float"
               style={{animationDelay: "1s"}}
             />
             <img
@@ -76,17 +75,17 @@ const App = () => {
               style={{animationDelay: "2s"}}
             />
             
-            {Array.from({ length: 100 }).map((_, index) => (
+            {Array.from({ length: 150 }).map((_, index) => (
               <div 
                 key={index}
-                className="dumbbell absolute text-gray-600 dark:text-gray-400" 
+                className="dumbbell absolute text-gray-400 dark:text-gray-600" 
                 style={{
                   left: `${Math.random() * 100}%`,
                   top: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 5}s`,
-                  animationDuration: `${5 + Math.random() * 7}s`,
-                  transform: `scale(${0.4 + Math.random() * 0.8}) rotate(${Math.random() * 45}deg)`,
-                  opacity: 0.2 + Math.random() * 0.3,
+                  animationDelay: `${Math.random() * 8}s`,
+                  animationDuration: `${8 + Math.random() * 10}s`,
+                  transform: `scale(${0.3 + Math.random() * 0.5}) rotate(${Math.random() * 360}deg)`,
+                  opacity: 0.15 + Math.random() * 0.2,
                   zIndex: -1
                 }}
               >
@@ -95,23 +94,23 @@ const App = () => {
             ))}
             
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-              <div className="absolute top-[20%] left-[10%] w-64 h-64 bg-fitness-blue/10 dark:bg-fitness-blue/5 rounded-full blur-3xl animate-pulse-soft"></div>
-              <div className="absolute top-[40%] right-[20%] w-80 h-80 bg-fitness-green/10 dark:bg-fitness-green/5 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: "1s" }}></div>
-              <div className="absolute bottom-[30%] left-[30%] w-72 h-72 bg-fitness-orange/10 dark:bg-fitness-orange/5 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: "2s" }}></div>
-              <div className="absolute top-[60%] right-[30%] w-56 h-56 bg-purple-500/10 dark:bg-purple-500/5 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: "1.5s" }}></div>
-              <div className="absolute bottom-[10%] right-[15%] w-48 h-48 bg-pink-500/10 dark:bg-pink-500/5 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: "0.8s" }}></div>
+              <div className="absolute top-[20%] left-[10%] w-64 h-64 bg-fitness-blue/5 dark:bg-fitness-blue/3 rounded-full blur-3xl animate-pulse-soft"></div>
+              <div className="absolute top-[40%] right-[20%] w-80 h-80 bg-fitness-green/5 dark:bg-fitness-green/3 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: "1s" }}></div>
+              <div className="absolute bottom-[30%] left-[30%] w-72 h-72 bg-fitness-orange/5 dark:bg-fitness-orange/3 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: "2s" }}></div>
+              <div className="absolute top-[60%] right-[30%] w-56 h-56 bg-purple-500/5 dark:bg-purple-500/3 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: "1.5s" }}></div>
+              <div className="absolute bottom-[10%] right-[15%] w-48 h-48 bg-pink-500/5 dark:bg-pink-500/3 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: "0.8s" }}></div>
             </div>
             
-            <div className="particle-container absolute inset-0 overflow-hidden opacity-40 dark:opacity-20 pointer-events-none" aria-hidden="true">
-              {Array.from({ length: 80 }).map((_, i) => (
+            <div className="particle-container absolute inset-0 overflow-hidden opacity-20 dark:opacity-10 pointer-events-none" aria-hidden="true">
+              {Array.from({ length: 40 }).map((_, i) => (
                 <div 
                   key={i}
-                  className="absolute h-3 w-3 rounded-full bg-white/40 dark:bg-white/20"
+                  className="absolute h-2 w-2 rounded-full bg-white/20 dark:bg-white/10"
                   style={{
                     top: `${Math.random() * 100}%`,
                     left: `${Math.random() * 100}%`,
-                    animation: `float ${3 + Math.random() * 7}s linear infinite`,
-                    opacity: 0.2 + Math.random() * 0.3,
+                    animation: `float ${5 + Math.random() * 8}s linear infinite`,
+                    opacity: 0.1 + Math.random() * 0.2,
                     zIndex: -1
                   }}
                 ></div>
