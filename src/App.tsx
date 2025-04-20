@@ -41,7 +41,7 @@ const App = () => {
     <React.StrictMode>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
-          <div className="fixed inset-0 -z-10 bg-transparent overflow-hidden">
+          <div className="fixed inset-0 -z-10 bg-transparent overflow">
             <div className="absolute inset-0 bg-gradient-to-br from-fitness-blue/10 via-fitness-green/10 to-fitness-orange/10 dark:from-fitness-blue/5 dark:via-fitness-green/5 dark:to-fitness-orange/5 animate-gradient-shift"></div>
             
             <img
